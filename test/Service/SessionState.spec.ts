@@ -41,14 +41,12 @@ describe('Module: Session', () => {
                         userId   : 1,
                         firstName: 'should',
                         lastName : 'work',
-                        role     : 'bob',
                         isAdmin  : true
                     });
                     expect(subject.loggedIn).toBeTruthy('loggedIn');
                     expect(subject.userId).toEqual(1, 'userId');
                     expect(subject.firstName).toEqual('should', 'firstName');
                     expect(subject.lastName).toEqual('work', 'lastName');
-                    expect(subject.role).toEqual('bob', 'role');
                     expect(subject.isAdmin).toBeTruthy('isAdmin');
                 });
             });
@@ -57,7 +55,6 @@ describe('Module: Session', () => {
                     subject.update = (structure: any) => {
                         expect(structure).toEqual({
                             userId   : 1,
-                            role     : 'Member',
                             isAdmin  : false,
                             firstName: '',
                             lastName : '',
@@ -73,13 +70,11 @@ describe('Module: Session', () => {
             describe('Method: Initialize', () => {
                 it('should reset to the default values', () => {
                     subject.loggedIn  = true;
-                    subject.role      = '';
                     subject.firstName = '';
                     subject.lastName  = '';
                     subject.isAdmin   = true;
                     subject.initialize();
                     expect(subject.loggedIn).toBeFalsy('loggedIn');
-                    expect(subject.role).toEqual(SessionState.DEFAULT_ROLE);
                     expect(subject.firstName).toEqual(SessionState.DEFAULT_FIRST_NAME);
                     expect(subject.lastName).toEqual(SessionState.DEFAULT_LAST_NAME);
                     expect(subject.isAdmin).toEqual(SessionState.DEFAULT_IS_ADMIN);

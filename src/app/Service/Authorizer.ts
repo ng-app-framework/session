@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {AccessController} from "@ng-app-framework/access";
 import {Session} from "./Session";
 import {Router} from "@angular/router";
 
@@ -9,17 +8,17 @@ export class Authorizer {
     static homeUri  = '/';
     static loginUri = '/login';
 
-    constructor(public accessController: AccessController, public session: Session, public router: Router) {
+    constructor(public session: Session, public router: Router) {
     }
 
     redirectIfUnauthorized(permissions: string[] = ['loggedIn']) {
         if (!this.isAuthorized(permissions)) {
-            this.redirect();
+            return this.redirect();
         }
     }
 
     isAuthorized(permissions: string[] = ['loggedIn']) {
-        return this.accessController.isRoleAuthorized(this.session.state.role, permissions);
+        return permissions.indexOf('loggedIn') !== -1 && this.session.isLoggedIn();
     }
 
     redirect() {

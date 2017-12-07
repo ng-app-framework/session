@@ -5,11 +5,6 @@ describe('Module: Session', () => {
 
         describe('After Instantiation', () => {
             let subject: Authorizer;
-            let accessController = <any>{
-                isRoleAuthorized: (role, permissions) => {
-
-                }
-            };
             let router           = <any>{
                 navigateByUrl: (url: string) => {
                 }
@@ -25,11 +20,6 @@ describe('Module: Session', () => {
             };
 
             beforeEach(() => {
-                accessController = <any>{
-                    isRoleAuthorized: (role, permissions) => {
-
-                    }
-                };
                 router           = <any>{
                     navigateByUrl: (url: string) => {
                     }
@@ -43,25 +33,19 @@ describe('Module: Session', () => {
                         return session.loggedIn
                     }
                 };
-                subject          = new Authorizer(accessController, session, router);
+                subject          = new Authorizer(session, router);
             });
 
             describe('Method: Redirect if Unauthorized', () => {
                 it('should only redirect if unauthorized', () => {
                     let redirected                    = false;
 
-                    accessController.isRoleAuthorized = () => {
-                        return true;
-                    };
                     subject.redirectIfUnauthorized([]);
                     expect(redirected).toBeFalsy('should not have redirected');
                     router.navigateByUrl              = () => {
                         redirected = true;
                     };
-                    accessController.isRoleAuthorized = () => {
-                        return false;
-                    };
-                    subject.redirectIfUnauthorized([]);
+                    subject.redirectIfUnauthorized(['loggedIn']);
                     expect(redirected).toBeTruthy('should have redirected');
                 });
             });
