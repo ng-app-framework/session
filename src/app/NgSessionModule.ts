@@ -5,16 +5,16 @@ import {Session} from "./Service/Session";
 import {Authorizer} from "./Service/Authorizer";
 import {SessionEvents} from "./Service/SessionEvents";
 import {SessionState} from "./Service/SessionState";
-import {StorageModule} from "@ng-app-framework/storage";
-import {CoreModule} from "@ng-app-framework/core";
+import {NgStorageModule} from "@ng-app-framework/storage";
+import {NgCoreModule} from "@ng-app-framework/core";
 
 @NgModule({
     declarations: [],
     imports     : [
         CommonModule,
-        CoreModule,
+        NgCoreModule,
         RouterModule,
-        StorageModule
+        NgStorageModule
     ],
     providers   : [
         SessionEvents,
@@ -23,7 +23,7 @@ import {CoreModule} from "@ng-app-framework/core";
         Authorizer
     ]
 })
-export class SessionModule {
+export class NgSessionModule {
 
     constructor(session: Session) {
     }
