@@ -1,6 +1,6 @@
 {
   "name": "@ng-app-framework/session",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "keywords": [
     "ng-app",
@@ -19,27 +19,19 @@
   },
   "private": false,
   "dependencies": {
-    "rxjs": "^5.5.5"
-  },
-  "peerDependencies": {
     "@angular/core": "^5.1.0",
     "@angular/common": "^5.1.0",
     "@angular/router": "^5.1.0",
-    "@ng-app-framework/core": "^1.0.4",
-    "@ng-app-framework/storage": "^1.0.4",
+    "@ng-app-framework/core": "^1.1.0",
+    "@ng-app-framework/storage": "^1.1.0",
     "rxjs": "^5.5.5"
   },
   "devDependencies": {
     "@angular/cli": "^1.6.0",
-    "@angular/common": "^5.1.0",
     "@angular/compiler": "^5.1.0",
     "@angular/compiler-cli": "^5.1.0",
-    "@angular/core": "^5.1.0",
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
-    "@angular/router": "^5.1.0",
-    "@ng-app-framework/core": "^1.1.0",
-    "@ng-app-framework/storage": "^1.1.0",
     "@types/jasmine": "2.5.45",
     "@types/jquery": "^2.0.48",
     "@types/node": "^6.0.93",
