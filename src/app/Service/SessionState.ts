@@ -1,4 +1,3 @@
-import {Value} from "@ng-app-framework/core";
 import {Storage} from "@ng-app-framework/storage";
 
 export class SessionState extends Storage {
@@ -34,15 +33,6 @@ export class SessionState extends Storage {
             lastName : data.lastName || '',
             loggedIn : true
         });
-    }
-
-    public update(object: { [key: string]: any }) {
-        for (let key in object) {
-            if (Value.isDefined(object[key]) && Value.isDefined(this[key])) {
-                this[key] = object[key];
-            }
-        }
-        this.store();
     }
 
     public initialize() {
